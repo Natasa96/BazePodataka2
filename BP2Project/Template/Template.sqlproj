@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>Template</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{7ffa0b0c-223a-4f5b-83a4-bbb9ffeb130f}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>Template</RootNamespace>
+    <AssemblyName>Template</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="Schema objects" />
+    <Folder Include="Schema objects\Schemas" />
+    <Folder Include="Schema objects\Schemas\dbo" />
+    <Folder Include="Schema objects\Schemas\dbo\Programmability" />
+    <Folder Include="Schema objects\Schemas\dbo\Tables" />
+    <Folder Include="Schema objects\Schemas\dbo\Views" />
+    <Folder Include="Schema objects\Schemas\dbo\Tables\Keys" />
+    <Folder Include="Schema objects\Schemas\dbo\Tables\Indexes" />
+    <Folder Include="Schema objects\Schemas\dbo\Tables\Triggers" />
+    <Folder Include="Schema objects\Schemas\dbo\Programmability\Functions" />
+    <Folder Include="Schema objects\Schemas\dbo\Programmability\Stored Procedures" />
+    <Folder Include="Schema objects\Schemas\dbo\Programmability\Types" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Schema objects\Schemas\dbo\Tables\Proizvodjac.sql" />
+    <Build Include="Schema objects\Schemas\dbo\Tables\Artikal.sql" />
+    <Build Include="Schema objects\Schemas\dbo\Tables\Tip.sql" />
+    <Build Include="Schema objects\Schemas\dbo\Tables\Vrsta.sql" />
+    <Build Include="Schema objects\Schemas\dbo\Tables\StavkaKorpe.sql" />
+    <Build Include="Schema objects\Schemas\dbo\Tables\Racun.sql" />
+    <Build Include="Schema objects\Schemas\dbo\Tables\Dostavlja.sql" />
+    <Build Include="Schema objects\Schemas\dbo\Tables\Lokacija.sql" />
+    <Build Include="Schema objects\Schemas\dbo\Tables\Uredjuje.sql" />
+    <Build Include="Schema objects\Schemas\dbo\Tables\Komentar.sql" />
+    <Build Include="Schema objects\Schemas\dbo\Tables\Korisnik.sql" />
+    <Build Include="Schema objects\Schemas\dbo\Tables\Keys\Proizvodjac_PK.sql" />
+    <Build Include="Schema objects\Schemas\dbo\Tables\Keys\Artikal_PK.sql" />
+    <Build Include="Schema objects\Schemas\dbo\Tables\Keys\Racun_PK.sql" />
+    <Build Include="Schema objects\Schemas\dbo\Tables\Keys\Lokacija_PK.sql" />
+    <Build Include="Schema objects\Schemas\dbo\Tables\Keys\Komentar_PK.sql" />
+    <Build Include="Schema objects\Schemas\dbo\Tables\Keys\Korisnik_PK.sql" />
+    <Build Include="Schema objects\Schemas\dbo\Tables\Kupac.sql" />
+    <Build Include="Schema objects\Schemas\dbo\Tables\Admin.sql" />
+    <Build Include="Schema objects\Schemas\dbo\Tables\Pravi.sql" />
+    <Build Include="Schema objects\Schemas\dbo\Tables\Keys\Pravi_FK1.sql" />
+    <Build Include="Schema objects\Schemas\dbo\Tables\Keys\Pravi_FK2.sql" />
+    <Build Include="Schema objects\Schemas\dbo\Tables\Keys\Tip_FK.sql" />
+    <Build Include="Schema objects\Schemas\dbo\Tables\Keys\Tip_PK.sql" />
+    <Build Include="Schema objects\Schemas\dbo\Tables\Keys\Vrsta_PK.sql" />
+    <Build Include="Schema objects\Schemas\dbo\Tables\Keys\Vrsta_FK1.sql" />
+    <Build Include="Schema objects\Schemas\dbo\Tables\Keys\StavkaKorpe_FK.sql" />
+    <Build Include="Schema objects\Schemas\dbo\Tables\Keys\StavkaKorpe_FK1.sql" />
+    <Build Include="Schema objects\Schemas\dbo\Tables\Keys\StavkaKorpe_PK.sql" />
+    <Build Include="Schema objects\Schemas\dbo\Tables\Keys\Kupac_FK.sql" />
+    <Build Include="Schema objects\Schemas\dbo\Tables\Keys\Kupac_PK1.sql" />
+    <Build Include="Schema objects\Schemas\dbo\Tables\Keys\Admin_PK1.sql" />
+    <Build Include="Schema objects\Schemas\dbo\Tables\Keys\Admin_FK.sql" />
+    <Build Include="Schema objects\Schemas\dbo\Tables\Keys\Racun_FK.sql" />
+    <Build Include="Schema objects\Schemas\dbo\Tables\Keys\Dostavlja_FK.sql" />
+    <Build Include="Schema objects\Schemas\dbo\Tables\Keys\Dostavlja_FK1.sql" />
+    <Build Include="Schema objects\Schemas\dbo\Tables\Keys\Dostavlja_PK.sql" />
+    <Build Include="Schema objects\Schemas\dbo\Tables\Keys\Uredjuje_FK.sql" />
+    <Build Include="Schema objects\Schemas\dbo\Tables\Keys\Uredjuje_FK1.sql" />
+    <Build Include="Schema objects\Schemas\dbo\Tables\Keys\Uredjuje_PK.sql" />
+    <Build Include="Schema objects\Schemas\dbo\Tables\Keys\Pravi_PK.sql" />
+    <Build Include="Schema objects\Schemas\dbo\Tables\Keys\Komentar_FK.sql" />
+    <Build Include="Schema objects\Schemas\dbo\Tables\Keys\Komentar_FK1.sql" />
+    <Build Include="Schema objects\Schemas\dbo\Tables\Indexes\ArtikalIndex.sql" />
+    <Build Include="Schema objects\Schemas\dbo\Programmability\Functions\SumFunction.sql" />
+    <Build Include="Schema objects\Schemas\dbo\Programmability\Stored Procedures\RacunProcedure.sql" />
+    <Build Include="Schema objects\Schemas\dbo\Tables\Triggers\MoneyTrigger.sql" />
+    <Build Include="Schema objects\Schemas\dbo\Tables\Triggers\StavkaTrigger.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="Template.refactorlog" />
+  </ItemGroup>
+</Project>

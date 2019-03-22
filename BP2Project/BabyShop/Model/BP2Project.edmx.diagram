@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d579e7b0614d484497adec9af5f6e3b2" Name="Diagram1">
+        <EntityTypeShape EntityType="BP2ProjectModel.C__RefactorLog" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BP2ProjectModel.Admin" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BP2ProjectModel.Artikal" Width="1.5" PointX="5.25" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BP2ProjectModel.Komentar" Width="1.5" PointX="10.5" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BP2ProjectModel.Korisnik" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BP2ProjectModel.Kupac" Width="1.5" PointX="3" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BP2ProjectModel.Lokacija" Width="1.5" PointX="5.25" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BP2ProjectModel.Pravi" Width="1.5" PointX="7.5" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BP2ProjectModel.Proizvodjac" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BP2ProjectModel.Racun" Width="1.5" PointX="5.25" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BP2ProjectModel.Tip" Width="1.5" PointX="7.5" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BP2ProjectModel.Vrsta" Width="1.5" PointX="9.75" PointY="10.75" IsExpanded="true" />
+        <AssociationConnector Association="BP2ProjectModel.Admin_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="BP2ProjectModel.Komentar_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="BP2ProjectModel.Pravi_FK2" ManuallyRouted="false" />
+        <AssociationConnector Association="BP2ProjectModel.Tip_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="BP2ProjectModel.Komentar_FK1" ManuallyRouted="false" />
+        <AssociationConnector Association="BP2ProjectModel.Kupac_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="BP2ProjectModel.Racun_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="BP2ProjectModel.Pravi_FK1" ManuallyRouted="false" />
+        <AssociationConnector Association="BP2ProjectModel.Vrsta_FK1" ManuallyRouted="false" />
+        <AssociationConnector Association="BP2ProjectModel.Dostavlja" ManuallyRouted="false" />
+        <AssociationConnector Association="BP2ProjectModel.StavkaKorpe" ManuallyRouted="false" />
+        <AssociationConnector Association="BP2ProjectModel.Uredjuje" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

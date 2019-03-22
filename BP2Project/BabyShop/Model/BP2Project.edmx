@@ -1,0 +1,891 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BP2ProjectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__RefactorLog">
+          <Key>
+            <PropertyRef Name="OperationKey" />
+          </Key>
+          <Property Name="OperationKey" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Artikal">
+          <Key>
+            <PropertyRef Name="Naziv" />
+          </Key>
+          <Property Name="Naziv" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cena" Type="float" />
+          <Property Name="Opis" Type="varchar" MaxLength="500" />
+          <Property Name="Slika" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Dostavlja">
+          <Key>
+            <PropertyRef Name="Kupac_Username" />
+            <PropertyRef Name="Lokacija_ID" />
+          </Key>
+          <Property Name="Kupac_Username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Lokacija_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Komentar">
+          <Key>
+            <PropertyRef Name="Komentar_ID" />
+          </Key>
+          <Property Name="Sadrzaj" Type="varchar" MaxLength="50" />
+          <Property Name="Ocena" Type="int" />
+          <Property Name="Komentar_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Artikal_Naziv" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Kupac_Username" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Korisnik">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Ime" Type="varchar" MaxLength="50" />
+          <Property Name="Prezime" Type="varchar" MaxLength="50" />
+          <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kupac">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Racun" Type="float" />
+          <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Lokacija">
+          <Key>
+            <PropertyRef Name="Lokacija_ID" />
+          </Key>
+          <Property Name="Ulica" Type="varchar" MaxLength="50" />
+          <Property Name="Broj" Type="int" />
+          <Property Name="Grad" Type="varchar" MaxLength="50" />
+          <Property Name="PostanskiBroj" Type="int" />
+          <Property Name="Lokacija_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pravi">
+          <Key>
+            <PropertyRef Name="Proizvodjac_ID" />
+            <PropertyRef Name="Artikal_Naziv" />
+          </Key>
+          <Property Name="Proizvodjac_ID" Type="int" Nullable="false" />
+          <Property Name="Artikal_Naziv" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Proizvodjac">
+          <Key>
+            <PropertyRef Name="Proizvodjac_ID" />
+          </Key>
+          <Property Name="Proizvodjac_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naziv" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Racun">
+          <Key>
+            <PropertyRef Name="Racun_ID" />
+          </Key>
+          <Property Name="Racun_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Suma" Type="float" />
+          <Property Name="Kupac_Username" Type="varchar" MaxLength="50" />
+          <Property Name="StavkaKorpe" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="StavkaKorpe">
+          <Key>
+            <PropertyRef Name="Artikal_Naziv" />
+            <PropertyRef Name="Kupac_Username" />
+          </Key>
+          <Property Name="Artikal_Naziv" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Kupac_Username" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tip">
+          <Key>
+            <PropertyRef Name="Tip_ID" />
+            <PropertyRef Name="Artikal_Naziv" />
+          </Key>
+          <Property Name="Tip_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Opis" Type="varchar" MaxLength="50" />
+          <Property Name="Naziv" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Artikal_Naziv" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Uredjuje">
+          <Key>
+            <PropertyRef Name="Proizvodjac_ID" />
+            <PropertyRef Name="Artikal_Naziv" />
+            <PropertyRef Name="Admin_Username" />
+          </Key>
+          <Property Name="Proizvodjac_ID" Type="int" Nullable="false" />
+          <Property Name="Artikal_Naziv" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Admin_Username" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vrsta">
+          <Key>
+            <PropertyRef Name="Vrsta_ID" />
+            <PropertyRef Name="Tip_ID" />
+            <PropertyRef Name="Artikal_Naziv" />
+          </Key>
+          <Property Name="Vrsta_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naziv" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Opis" Type="varchar" MaxLength="50" />
+          <Property Name="Tip_ID" Type="int" Nullable="false" />
+          <Property Name="Artikal_Naziv" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="Admin_FK">
+          <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="1" />
+          <End Role="Admin" Type="Self.Admin" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnik">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="Admin">
+              <PropertyRef Name="Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Dostavlja_FK">
+          <End Role="Kupac" Type="Self.Kupac" Multiplicity="1" />
+          <End Role="Dostavlja" Type="Self.Dostavlja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kupac">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="Dostavlja">
+              <PropertyRef Name="Kupac_Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Dostavlja_FK1">
+          <End Role="Lokacija" Type="Self.Lokacija" Multiplicity="1" />
+          <End Role="Dostavlja" Type="Self.Dostavlja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lokacija">
+              <PropertyRef Name="Lokacija_ID" />
+            </Principal>
+            <Dependent Role="Dostavlja">
+              <PropertyRef Name="Lokacija_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Komentar_FK">
+          <End Role="Artikal" Type="Self.Artikal" Multiplicity="1" />
+          <End Role="Komentar" Type="Self.Komentar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Artikal">
+              <PropertyRef Name="Naziv" />
+            </Principal>
+            <Dependent Role="Komentar">
+              <PropertyRef Name="Artikal_Naziv" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Komentar_FK1">
+          <End Role="Kupac" Type="Self.Kupac" Multiplicity="1" />
+          <End Role="Komentar" Type="Self.Komentar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kupac">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="Komentar">
+              <PropertyRef Name="Kupac_Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Kupac_FK">
+          <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="1" />
+          <End Role="Kupac" Type="Self.Kupac" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnik">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="Kupac">
+              <PropertyRef Name="Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Pravi_FK1">
+          <End Role="Proizvodjac" Type="Self.Proizvodjac" Multiplicity="1" />
+          <End Role="Pravi" Type="Self.Pravi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proizvodjac">
+              <PropertyRef Name="Proizvodjac_ID" />
+            </Principal>
+            <Dependent Role="Pravi">
+              <PropertyRef Name="Proizvodjac_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Pravi_FK2">
+          <End Role="Artikal" Type="Self.Artikal" Multiplicity="1" />
+          <End Role="Pravi" Type="Self.Pravi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Artikal">
+              <PropertyRef Name="Naziv" />
+            </Principal>
+            <Dependent Role="Pravi">
+              <PropertyRef Name="Artikal_Naziv" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Racun_FK">
+          <End Role="Kupac" Type="Self.Kupac" Multiplicity="0..1" />
+          <End Role="Racun" Type="Self.Racun" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kupac">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="Racun">
+              <PropertyRef Name="Kupac_Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="StavkaKorpe_FK">
+          <End Role="Kupac" Type="Self.Kupac" Multiplicity="1" />
+          <End Role="StavkaKorpe" Type="Self.StavkaKorpe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kupac">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="StavkaKorpe">
+              <PropertyRef Name="Kupac_Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="StavkaKorpe_FK1">
+          <End Role="Artikal" Type="Self.Artikal" Multiplicity="1" />
+          <End Role="StavkaKorpe" Type="Self.StavkaKorpe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Artikal">
+              <PropertyRef Name="Naziv" />
+            </Principal>
+            <Dependent Role="StavkaKorpe">
+              <PropertyRef Name="Artikal_Naziv" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Tip_FK">
+          <End Role="Artikal" Type="Self.Artikal" Multiplicity="1" />
+          <End Role="Tip" Type="Self.Tip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Artikal">
+              <PropertyRef Name="Naziv" />
+            </Principal>
+            <Dependent Role="Tip">
+              <PropertyRef Name="Artikal_Naziv" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Uredjuje_FK">
+          <End Role="Pravi" Type="Self.Pravi" Multiplicity="1" />
+          <End Role="Uredjuje" Type="Self.Uredjuje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pravi">
+              <PropertyRef Name="Proizvodjac_ID" />
+              <PropertyRef Name="Artikal_Naziv" />
+            </Principal>
+            <Dependent Role="Uredjuje">
+              <PropertyRef Name="Proizvodjac_ID" />
+              <PropertyRef Name="Artikal_Naziv" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Uredjuje_FK1">
+          <End Role="Admin" Type="Self.Admin" Multiplicity="1" />
+          <End Role="Uredjuje" Type="Self.Uredjuje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Admin">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="Uredjuje">
+              <PropertyRef Name="Admin_Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Vrsta_FK1">
+          <End Role="Tip" Type="Self.Tip" Multiplicity="1" />
+          <End Role="Vrsta" Type="Self.Vrsta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tip">
+              <PropertyRef Name="Tip_ID" />
+              <PropertyRef Name="Artikal_Naziv" />
+            </Principal>
+            <Dependent Role="Vrsta">
+              <PropertyRef Name="Tip_ID" />
+              <PropertyRef Name="Artikal_Naziv" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="RacunProcedure" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="sum" Type="int" Mode="In" />
+          <Parameter Name="kupacID" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SumFunction" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+          <Parameter Name="kupacID" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="BP2ProjectModelStoreContainer">
+          <EntitySet Name="__RefactorLog" EntityType="Self.__RefactorLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Artikal" EntityType="Self.Artikal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dostavlja" EntityType="Self.Dostavlja" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Komentar" EntityType="Self.Komentar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Korisnik" EntityType="Self.Korisnik" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kupac" EntityType="Self.Kupac" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lokacija" EntityType="Self.Lokacija" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pravi" EntityType="Self.Pravi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Proizvodjac" EntityType="Self.Proizvodjac" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Racun" EntityType="Self.Racun" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StavkaKorpe" EntityType="Self.StavkaKorpe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tip" EntityType="Self.Tip" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Uredjuje" EntityType="Self.Uredjuje" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vrsta" EntityType="Self.Vrsta" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="Admin_FK" Association="Self.Admin_FK">
+            <End Role="Korisnik" EntitySet="Korisnik" />
+            <End Role="Admin" EntitySet="Admin" />
+          </AssociationSet>
+          <AssociationSet Name="Dostavlja_FK" Association="Self.Dostavlja_FK">
+            <End Role="Kupac" EntitySet="Kupac" />
+            <End Role="Dostavlja" EntitySet="Dostavlja" />
+          </AssociationSet>
+          <AssociationSet Name="Dostavlja_FK1" Association="Self.Dostavlja_FK1">
+            <End Role="Lokacija" EntitySet="Lokacija" />
+            <End Role="Dostavlja" EntitySet="Dostavlja" />
+          </AssociationSet>
+          <AssociationSet Name="Komentar_FK" Association="Self.Komentar_FK">
+            <End Role="Artikal" EntitySet="Artikal" />
+            <End Role="Komentar" EntitySet="Komentar" />
+          </AssociationSet>
+          <AssociationSet Name="Komentar_FK1" Association="Self.Komentar_FK1">
+            <End Role="Kupac" EntitySet="Kupac" />
+            <End Role="Komentar" EntitySet="Komentar" />
+          </AssociationSet>
+          <AssociationSet Name="Kupac_FK" Association="Self.Kupac_FK">
+            <End Role="Korisnik" EntitySet="Korisnik" />
+            <End Role="Kupac" EntitySet="Kupac" />
+          </AssociationSet>
+          <AssociationSet Name="Pravi_FK1" Association="Self.Pravi_FK1">
+            <End Role="Proizvodjac" EntitySet="Proizvodjac" />
+            <End Role="Pravi" EntitySet="Pravi" />
+          </AssociationSet>
+          <AssociationSet Name="Pravi_FK2" Association="Self.Pravi_FK2">
+            <End Role="Artikal" EntitySet="Artikal" />
+            <End Role="Pravi" EntitySet="Pravi" />
+          </AssociationSet>
+          <AssociationSet Name="Racun_FK" Association="Self.Racun_FK">
+            <End Role="Kupac" EntitySet="Kupac" />
+            <End Role="Racun" EntitySet="Racun" />
+          </AssociationSet>
+          <AssociationSet Name="StavkaKorpe_FK" Association="Self.StavkaKorpe_FK">
+            <End Role="Kupac" EntitySet="Kupac" />
+            <End Role="StavkaKorpe" EntitySet="StavkaKorpe" />
+          </AssociationSet>
+          <AssociationSet Name="StavkaKorpe_FK1" Association="Self.StavkaKorpe_FK1">
+            <End Role="Artikal" EntitySet="Artikal" />
+            <End Role="StavkaKorpe" EntitySet="StavkaKorpe" />
+          </AssociationSet>
+          <AssociationSet Name="Tip_FK" Association="Self.Tip_FK">
+            <End Role="Artikal" EntitySet="Artikal" />
+            <End Role="Tip" EntitySet="Tip" />
+          </AssociationSet>
+          <AssociationSet Name="Uredjuje_FK" Association="Self.Uredjuje_FK">
+            <End Role="Pravi" EntitySet="Pravi" />
+            <End Role="Uredjuje" EntitySet="Uredjuje" />
+          </AssociationSet>
+          <AssociationSet Name="Uredjuje_FK1" Association="Self.Uredjuje_FK1">
+            <End Role="Admin" EntitySet="Admin" />
+            <End Role="Uredjuje" EntitySet="Uredjuje" />
+          </AssociationSet>
+          <AssociationSet Name="Vrsta_FK1" Association="Self.Vrsta_FK1">
+            <End Role="Tip" EntitySet="Tip" />
+            <End Role="Vrsta" EntitySet="Vrsta" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BP2ProjectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__RefactorLog">
+          <Key>
+            <PropertyRef Name="OperationKey" />
+          </Key>
+          <Property Name="OperationKey" Type="Guid" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Korisnik" Relationship="Self.Admin_FK" FromRole="Admin" ToRole="Korisnik" />
+          <NavigationProperty Name="Pravis" Relationship="Self.Uredjuje" FromRole="Admin" ToRole="Pravi" />
+        </EntityType>
+        <EntityType Name="Artikal">
+          <Key>
+            <PropertyRef Name="Naziv" />
+          </Key>
+          <Property Name="Naziv" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cena" Type="Double" />
+          <Property Name="Opis" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Slika" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Komentars" Relationship="Self.Komentar_FK" FromRole="Artikal" ToRole="Komentar" />
+          <NavigationProperty Name="Pravis" Relationship="Self.Pravi_FK2" FromRole="Artikal" ToRole="Pravi" />
+          <NavigationProperty Name="Tips" Relationship="Self.Tip_FK" FromRole="Artikal" ToRole="Tip" />
+          <NavigationProperty Name="Kupacs" Relationship="Self.StavkaKorpe" FromRole="Artikal" ToRole="Kupac" />
+        </EntityType>
+        <EntityType Name="Komentar">
+          <Key>
+            <PropertyRef Name="Komentar_ID" />
+          </Key>
+          <Property Name="Sadrzaj" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Ocena" Type="Int32" />
+          <Property Name="Komentar_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Artikal_Naziv" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Kupac_Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Artikal" Relationship="Self.Komentar_FK" FromRole="Komentar" ToRole="Artikal" />
+          <NavigationProperty Name="Kupac" Relationship="Self.Komentar_FK1" FromRole="Komentar" ToRole="Kupac" />
+        </EntityType>
+        <EntityType Name="Korisnik">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Ime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Prezime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Admin" Relationship="Self.Admin_FK" FromRole="Korisnik" ToRole="Admin" />
+          <NavigationProperty Name="Kupac" Relationship="Self.Kupac_FK" FromRole="Korisnik" ToRole="Kupac" />
+        </EntityType>
+        <EntityType Name="Kupac">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Racun" Type="Double" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Komentars" Relationship="Self.Komentar_FK1" FromRole="Kupac" ToRole="Komentar" />
+          <NavigationProperty Name="Korisnik" Relationship="Self.Kupac_FK" FromRole="Kupac" ToRole="Korisnik" />
+          <NavigationProperty Name="Racuns" Relationship="Self.Racun_FK" FromRole="Kupac" ToRole="Racun" />
+          <NavigationProperty Name="Lokacijas" Relationship="Self.Dostavlja" FromRole="Kupac" ToRole="Lokacija" />
+          <NavigationProperty Name="Artikals" Relationship="Self.StavkaKorpe" FromRole="Kupac" ToRole="Artikal" />
+        </EntityType>
+        <EntityType Name="Lokacija">
+          <Key>
+            <PropertyRef Name="Lokacija_ID" />
+          </Key>
+          <Property Name="Ulica" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Broj" Type="Int32" />
+          <Property Name="Grad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PostanskiBroj" Type="Int32" />
+          <Property Name="Lokacija_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Kupacs" Relationship="Self.Dostavlja" FromRole="Lokacija" ToRole="Kupac" />
+        </EntityType>
+        <EntityType Name="Pravi">
+          <Key>
+            <PropertyRef Name="Proizvodjac_ID" />
+            <PropertyRef Name="Artikal_Naziv" />
+          </Key>
+          <Property Name="Proizvodjac_ID" Type="Int32" Nullable="false" />
+          <Property Name="Artikal_Naziv" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Artikal" Relationship="Self.Pravi_FK2" FromRole="Pravi" ToRole="Artikal" />
+          <NavigationProperty Name="Proizvodjac" Relationship="Self.Pravi_FK1" FromRole="Pravi" ToRole="Proizvodjac" />
+          <NavigationProperty Name="Admins" Relationship="Self.Uredjuje" FromRole="Pravi" ToRole="Admin" />
+        </EntityType>
+        <EntityType Name="Proizvodjac">
+          <Key>
+            <PropertyRef Name="Proizvodjac_ID" />
+          </Key>
+          <Property Name="Proizvodjac_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Pravis" Relationship="Self.Pravi_FK1" FromRole="Proizvodjac" ToRole="Pravi" />
+        </EntityType>
+        <EntityType Name="Racun">
+          <Key>
+            <PropertyRef Name="Racun_ID" />
+          </Key>
+          <Property Name="Racun_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Suma" Type="Double" />
+          <Property Name="Kupac_Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StavkaKorpe" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Kupac" Relationship="Self.Racun_FK" FromRole="Racun" ToRole="Kupac" />
+        </EntityType>
+        <EntityType Name="Tip">
+          <Key>
+            <PropertyRef Name="Tip_ID" />
+            <PropertyRef Name="Artikal_Naziv" />
+          </Key>
+          <Property Name="Tip_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Opis" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Naziv" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Artikal_Naziv" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Artikal" Relationship="Self.Tip_FK" FromRole="Tip" ToRole="Artikal" />
+          <NavigationProperty Name="Vrstas" Relationship="Self.Vrsta_FK1" FromRole="Tip" ToRole="Vrsta" />
+        </EntityType>
+        <EntityType Name="Vrsta">
+          <Key>
+            <PropertyRef Name="Vrsta_ID" />
+            <PropertyRef Name="Tip_ID" />
+            <PropertyRef Name="Artikal_Naziv" />
+          </Key>
+          <Property Name="Vrsta_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Opis" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Tip_ID" Type="Int32" Nullable="false" />
+          <Property Name="Artikal_Naziv" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Tip" Relationship="Self.Vrsta_FK1" FromRole="Vrsta" ToRole="Tip" />
+        </EntityType>
+        <Association Name="Admin_FK">
+          <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="1" />
+          <End Role="Admin" Type="Self.Admin" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnik">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="Admin">
+              <PropertyRef Name="Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Komentar_FK">
+          <End Role="Artikal" Type="Self.Artikal" Multiplicity="1" />
+          <End Role="Komentar" Type="Self.Komentar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Artikal">
+              <PropertyRef Name="Naziv" />
+            </Principal>
+            <Dependent Role="Komentar">
+              <PropertyRef Name="Artikal_Naziv" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Pravi_FK2">
+          <End Role="Artikal" Type="Self.Artikal" Multiplicity="1" />
+          <End Role="Pravi" Type="Self.Pravi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Artikal">
+              <PropertyRef Name="Naziv" />
+            </Principal>
+            <Dependent Role="Pravi">
+              <PropertyRef Name="Artikal_Naziv" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Tip_FK">
+          <End Role="Artikal" Type="Self.Artikal" Multiplicity="1" />
+          <End Role="Tip" Type="Self.Tip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Artikal">
+              <PropertyRef Name="Naziv" />
+            </Principal>
+            <Dependent Role="Tip">
+              <PropertyRef Name="Artikal_Naziv" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Komentar_FK1">
+          <End Role="Kupac" Type="Self.Kupac" Multiplicity="1" />
+          <End Role="Komentar" Type="Self.Komentar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kupac">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="Komentar">
+              <PropertyRef Name="Kupac_Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Kupac_FK">
+          <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="1" />
+          <End Role="Kupac" Type="Self.Kupac" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Korisnik">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="Kupac">
+              <PropertyRef Name="Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Racun_FK">
+          <End Role="Kupac" Type="Self.Kupac" Multiplicity="0..1" />
+          <End Role="Racun" Type="Self.Racun" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kupac">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="Racun">
+              <PropertyRef Name="Kupac_Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Pravi_FK1">
+          <End Role="Proizvodjac" Type="Self.Proizvodjac" Multiplicity="1" />
+          <End Role="Pravi" Type="Self.Pravi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proizvodjac">
+              <PropertyRef Name="Proizvodjac_ID" />
+            </Principal>
+            <Dependent Role="Pravi">
+              <PropertyRef Name="Proizvodjac_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Vrsta_FK1">
+          <End Role="Tip" Type="Self.Tip" Multiplicity="1" />
+          <End Role="Vrsta" Type="Self.Vrsta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tip">
+              <PropertyRef Name="Tip_ID" />
+              <PropertyRef Name="Artikal_Naziv" />
+            </Principal>
+            <Dependent Role="Vrsta">
+              <PropertyRef Name="Tip_ID" />
+              <PropertyRef Name="Artikal_Naziv" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Dostavlja">
+          <End Role="Kupac" Type="Self.Kupac" Multiplicity="*" />
+          <End Role="Lokacija" Type="Self.Lokacija" Multiplicity="*" />
+        </Association>
+        <Association Name="StavkaKorpe">
+          <End Role="Kupac" Type="Self.Kupac" Multiplicity="*" />
+          <End Role="Artikal" Type="Self.Artikal" Multiplicity="*" />
+        </Association>
+        <Association Name="Uredjuje">
+          <End Role="Pravi" Type="Self.Pravi" Multiplicity="*" />
+          <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="BP2ProjectEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__RefactorLog" EntityType="Self.C__RefactorLog" />
+          <EntitySet Name="Admins" EntityType="Self.Admin" />
+          <EntitySet Name="Artikals" EntityType="Self.Artikal" />
+          <EntitySet Name="Komentars" EntityType="Self.Komentar" />
+          <EntitySet Name="Korisniks" EntityType="Self.Korisnik" />
+          <EntitySet Name="Kupacs" EntityType="Self.Kupac" />
+          <EntitySet Name="Lokacijas" EntityType="Self.Lokacija" />
+          <EntitySet Name="Pravis" EntityType="Self.Pravi" />
+          <EntitySet Name="Proizvodjacs" EntityType="Self.Proizvodjac" />
+          <EntitySet Name="Racuns" EntityType="Self.Racun" />
+          <EntitySet Name="Tips" EntityType="Self.Tip" />
+          <EntitySet Name="Vrstas" EntityType="Self.Vrsta" />
+          <AssociationSet Name="Admin_FK" Association="Self.Admin_FK">
+            <End Role="Korisnik" EntitySet="Korisniks" />
+            <End Role="Admin" EntitySet="Admins" />
+          </AssociationSet>
+          <AssociationSet Name="Komentar_FK" Association="Self.Komentar_FK">
+            <End Role="Artikal" EntitySet="Artikals" />
+            <End Role="Komentar" EntitySet="Komentars" />
+          </AssociationSet>
+          <AssociationSet Name="Pravi_FK2" Association="Self.Pravi_FK2">
+            <End Role="Artikal" EntitySet="Artikals" />
+            <End Role="Pravi" EntitySet="Pravis" />
+          </AssociationSet>
+          <AssociationSet Name="Tip_FK" Association="Self.Tip_FK">
+            <End Role="Artikal" EntitySet="Artikals" />
+            <End Role="Tip" EntitySet="Tips" />
+          </AssociationSet>
+          <AssociationSet Name="Komentar_FK1" Association="Self.Komentar_FK1">
+            <End Role="Kupac" EntitySet="Kupacs" />
+            <End Role="Komentar" EntitySet="Komentars" />
+          </AssociationSet>
+          <AssociationSet Name="Kupac_FK" Association="Self.Kupac_FK">
+            <End Role="Korisnik" EntitySet="Korisniks" />
+            <End Role="Kupac" EntitySet="Kupacs" />
+          </AssociationSet>
+          <AssociationSet Name="Racun_FK" Association="Self.Racun_FK">
+            <End Role="Kupac" EntitySet="Kupacs" />
+            <End Role="Racun" EntitySet="Racuns" />
+          </AssociationSet>
+          <AssociationSet Name="Pravi_FK1" Association="Self.Pravi_FK1">
+            <End Role="Proizvodjac" EntitySet="Proizvodjacs" />
+            <End Role="Pravi" EntitySet="Pravis" />
+          </AssociationSet>
+          <AssociationSet Name="Vrsta_FK1" Association="Self.Vrsta_FK1">
+            <End Role="Tip" EntitySet="Tips" />
+            <End Role="Vrsta" EntitySet="Vrstas" />
+          </AssociationSet>
+          <AssociationSet Name="Dostavlja" Association="Self.Dostavlja">
+            <End Role="Kupac" EntitySet="Kupacs" />
+            <End Role="Lokacija" EntitySet="Lokacijas" />
+          </AssociationSet>
+          <AssociationSet Name="StavkaKorpe" Association="Self.StavkaKorpe">
+            <End Role="Kupac" EntitySet="Kupacs" />
+            <End Role="Artikal" EntitySet="Artikals" />
+          </AssociationSet>
+          <AssociationSet Name="Uredjuje" Association="Self.Uredjuje">
+            <End Role="Pravi" EntitySet="Pravis" />
+            <End Role="Admin" EntitySet="Admins" />
+          </AssociationSet>
+          <FunctionImport Name="RacunProcedure">
+            <Parameter Name="sum" Mode="In" Type="Int32" />
+            <Parameter Name="kupacID" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BP2ProjectModelStoreContainer" CdmEntityContainer="BP2ProjectEntities">
+          <EntitySetMapping Name="C__RefactorLog">
+            <EntityTypeMapping TypeName="BP2ProjectModel.C__RefactorLog">
+              <MappingFragment StoreEntitySet="__RefactorLog">
+                <ScalarProperty Name="OperationKey" ColumnName="OperationKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="BP2ProjectModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="Username" ColumnName="Username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Artikals">
+            <EntityTypeMapping TypeName="BP2ProjectModel.Artikal">
+              <MappingFragment StoreEntitySet="Artikal">
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Cena" ColumnName="Cena" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+                <ScalarProperty Name="Slika" ColumnName="Slika" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Komentars">
+            <EntityTypeMapping TypeName="BP2ProjectModel.Komentar">
+              <MappingFragment StoreEntitySet="Komentar">
+                <ScalarProperty Name="Sadrzaj" ColumnName="Sadrzaj" />
+                <ScalarProperty Name="Ocena" ColumnName="Ocena" />
+                <ScalarProperty Name="Komentar_ID" ColumnName="Komentar_ID" />
+                <ScalarProperty Name="Artikal_Naziv" ColumnName="Artikal_Naziv" />
+                <ScalarProperty Name="Kupac_Username" ColumnName="Kupac_Username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Korisniks">
+            <EntityTypeMapping TypeName="BP2ProjectModel.Korisnik">
+              <MappingFragment StoreEntitySet="Korisnik">
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kupacs">
+            <EntityTypeMapping TypeName="BP2ProjectModel.Kupac">
+              <MappingFragment StoreEntitySet="Kupac">
+                <ScalarProperty Name="Racun" ColumnName="Racun" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lokacijas">
+            <EntityTypeMapping TypeName="BP2ProjectModel.Lokacija">
+              <MappingFragment StoreEntitySet="Lokacija">
+                <ScalarProperty Name="Ulica" ColumnName="Ulica" />
+                <ScalarProperty Name="Broj" ColumnName="Broj" />
+                <ScalarProperty Name="Grad" ColumnName="Grad" />
+                <ScalarProperty Name="PostanskiBroj" ColumnName="PostanskiBroj" />
+                <ScalarProperty Name="Lokacija_ID" ColumnName="Lokacija_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pravis">
+            <EntityTypeMapping TypeName="BP2ProjectModel.Pravi">
+              <MappingFragment StoreEntitySet="Pravi">
+                <ScalarProperty Name="Proizvodjac_ID" ColumnName="Proizvodjac_ID" />
+                <ScalarProperty Name="Artikal_Naziv" ColumnName="Artikal_Naziv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Proizvodjacs">
+            <EntityTypeMapping TypeName="BP2ProjectModel.Proizvodjac">
+              <MappingFragment StoreEntitySet="Proizvodjac">
+                <ScalarProperty Name="Proizvodjac_ID" ColumnName="Proizvodjac_ID" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Racuns">
+            <EntityTypeMapping TypeName="BP2ProjectModel.Racun">
+              <MappingFragment StoreEntitySet="Racun">
+                <ScalarProperty Name="Racun_ID" ColumnName="Racun_ID" />
+                <ScalarProperty Name="Suma" ColumnName="Suma" />
+                <ScalarProperty Name="Kupac_Username" ColumnName="Kupac_Username" />
+                <ScalarProperty Name="StavkaKorpe" ColumnName="StavkaKorpe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tips">
+            <EntityTypeMapping TypeName="BP2ProjectModel.Tip">
+              <MappingFragment StoreEntitySet="Tip">
+                <ScalarProperty Name="Tip_ID" ColumnName="Tip_ID" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Artikal_Naziv" ColumnName="Artikal_Naziv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vrstas">
+            <EntityTypeMapping TypeName="BP2ProjectModel.Vrsta">
+              <MappingFragment StoreEntitySet="Vrsta">
+                <ScalarProperty Name="Vrsta_ID" ColumnName="Vrsta_ID" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+                <ScalarProperty Name="Tip_ID" ColumnName="Tip_ID" />
+                <ScalarProperty Name="Artikal_Naziv" ColumnName="Artikal_Naziv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Dostavlja" TypeName="BP2ProjectModel.Dostavlja" StoreEntitySet="Dostavlja">
+            <EndProperty Name="Kupac">
+              <ScalarProperty Name="Username" ColumnName="Kupac_Username" />
+            </EndProperty>
+            <EndProperty Name="Lokacija">
+              <ScalarProperty Name="Lokacija_ID" ColumnName="Lokacija_ID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="StavkaKorpe" TypeName="BP2ProjectModel.StavkaKorpe" StoreEntitySet="StavkaKorpe">
+            <EndProperty Name="Kupac">
+              <ScalarProperty Name="Username" ColumnName="Kupac_Username" />
+            </EndProperty>
+            <EndProperty Name="Artikal">
+              <ScalarProperty Name="Naziv" ColumnName="Artikal_Naziv" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Uredjuje" TypeName="BP2ProjectModel.Uredjuje" StoreEntitySet="Uredjuje">
+            <EndProperty Name="Pravi">
+              <ScalarProperty Name="Proizvodjac_ID" ColumnName="Proizvodjac_ID" />
+              <ScalarProperty Name="Artikal_Naziv" ColumnName="Artikal_Naziv" />
+            </EndProperty>
+            <EndProperty Name="Admin">
+              <ScalarProperty Name="Username" ColumnName="Admin_Username" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="RacunProcedure" FunctionName="BP2ProjectModel.Store.RacunProcedure" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

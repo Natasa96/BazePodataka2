@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="BabyShop.View.RegisterView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BabyShop.View"
+             xmlns:viewmodels="clr-namespace:BabyShop.ViewModel"
+             mc:Ignorable="d" 
+             d:DesignHeight="554" d:DesignWidth="800">
+    <UserControl.DataContext>
+        <viewmodels:RegisterViewModel/>
+    </UserControl.DataContext>
+    <Grid>
+        <Label x:Name="RegisterL" HorizontalContentAlignment="Center" Content="Register:" HorizontalAlignment="Left" Margin="150,131,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2,0.769" Height="48" Width="147" FontSize="20"/>
+        <Label x:Name="UsernameLabel" Content="Username:" HorizontalAlignment="Left" Margin="50,232,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2,0.769" Height="35" Width="105" FontSize="20"/>
+        <TextBox x:Name="UsernameTB" HorizontalAlignment="Left" Height="35" Margin="189,232,0,0" TextWrapping="Wrap" Text="{Binding Username, Mode=TwoWay}" VerticalAlignment="Top" Width="150" FontSize="20" RenderTransformOrigin="1.231,0.714"/>
+        <Label x:Name="PasswordLabel" Content="Password:" HorizontalAlignment="Left" Margin="50,272,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2,0.769" Height="35" Width="105" FontSize="20"/>
+        <TextBox x:Name="PasswordTB" HorizontalAlignment="Left" Height="35" Margin="189,272,0,0" TextWrapping="Wrap" Text="{Binding Password, Mode=TwoWay}" VerticalAlignment="Top" Width="150" FontSize="20" RenderTransformOrigin="0.923,0.314"/>
+        <Label x:Name="NameLabel" Content="Name:" HorizontalAlignment="Left" Margin="50,312,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2,0.769" Height="35" Width="105" FontSize="20"/>
+        <TextBox x:Name="ImeTB" HorizontalAlignment="Left" Height="35" Margin="189,312,0,0" TextWrapping="Wrap" Text="{Binding Ime, Mode=TwoWay}" VerticalAlignment="Top" Width="150" FontSize="20"/>
+        <Label x:Name="PrezimeLabel" Content="Lastname:" HorizontalAlignment="Left" Margin="50,352,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2,0.769" Height="35" Width="105" FontSize="20"/>
+        <TextBox x:Name="PrezimeTB" HorizontalAlignment="Left" Height="35" Margin="189,352,0,0" TextWrapping="Wrap" Text="{Binding Prezime, Mode=TwoWay}" VerticalAlignment="Top" Width="150" FontSize="20"/>
+        <Button x:Name="RegisterButton" Command="{Binding RegisterCommand}" Content="Register" HorizontalAlignment="Left" Margin="150,409,0,0" Width="147" Height="26" FontSize="16" VerticalAlignment="Top"/>
+        <Label x:Name="ErrorRegister" HorizontalContentAlignment="Center" Foreground="IndianRed" Content="{Binding ErrorRegister}" FontSize="16" HorizontalAlignment="Left" Height="34" Margin="50,449,0,0" VerticalAlignment="Top" Width="289"/>
+
+        <Border BorderBrush="#FF4B4242" BorderThickness="1" HorizontalAlignment="Left" Height="382" Margin="398,101,0,0" VerticalAlignment="Top" Width="2" RenderTransformOrigin="0.5,0.5"/>
+        <Label x:Name="LoginL" HorizontalContentAlignment="Center" Content="LogIn:" HorizontalAlignment="Left" Margin="530,131,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2,0.769" Height="48" Width="147" FontSize="20"/>
+        <Label x:Name="UsernameLLabel" Content="Username:" HorizontalAlignment="Left" Margin="458,237,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2,0.769" Height="35" Width="105" FontSize="20"/>
+        <TextBox x:Name="UsernameL" HorizontalAlignment="Left" Height="35" Margin="604,232,0,0" TextWrapping="Wrap" Text="{Binding UsernameL, Mode=TwoWay}" VerticalAlignment="Top" Width="130" FontSize="20" RenderTransformOrigin="1.231,0.714"/>
+        <Label x:Name="PasswordLLabel" Content="Password:" HorizontalAlignment="Left" Margin="458,272,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2,0.769" Height="35" Width="105" FontSize="20"/>
+        <TextBox x:Name="PasswordL" HorizontalAlignment="Left" Height="35" Margin="604,272,0,0" TextWrapping="Wrap" Text="{Binding PasswordL, Mode=TwoWay}" VerticalAlignment="Top" Width="130" FontSize="20" RenderTransformOrigin="0.923,0.314"/>
+        <TextBlock x:Name="WelcomTB" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="86" Width="772" FontSize="22" FontStyle="Italic" TextAlignment="Center">
+            Welcom to BabyShop application! <LineBreak/>
+            Please Login to continue, or Register if you do not have an account.
+        </TextBlock>
+        <Button x:Name="LoginButton" Command="{Binding LoginCommand}" Content="Login" HorizontalAlignment="Left" Height="26" Margin="530,409,0,0" VerticalAlignment="Top" Width="147" FontSize="16"/>
+        <Label x:Name="ErrorLogin" HorizontalContentAlignment="Center" Foreground="IndianRed" Content="{Binding ErrorLogin}" FontSize="16" HorizontalAlignment="Left" Height="34" Margin="458,449,0,0" VerticalAlignment="Top" Width="289"/>
+
+    </Grid>
+</UserControl>
